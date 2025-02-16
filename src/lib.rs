@@ -42,7 +42,7 @@ impl MevShareClient {
         Ok(Self { client: Box::new(client) })
     }
 
-    pub fn subscribe(&self) -> Pin<Box<dyn Stream<Item = Result<Event, MevShareClientError>>>> {
+    pub fn subscribe(&self) -> Pin<Box<dyn Stream<Item = Result<Event, MevShareClientError>> + Send>> {
         Box::pin(self.client.stream().filter_map(|event| async move {
             match event {
                 Ok(SSE::Connected(connection)) => {
