@@ -5,8 +5,9 @@ edition = "2021"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
-alloy-rpc-types-mev = "0.11.1"
-eventsource-client = "0.13.0"
+alloy-primitives = "0.8.21"
+alloy-rpc-types-mev = "0.12.2"
+eventsource-client = "0.14.0"
 eyre = "0.6.12"
 futures-util = "0.3.31"
 serde = "1.0.217"

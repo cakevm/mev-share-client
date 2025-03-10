@@ -1,3 +1,4 @@
+use alloy_primitives::{keccak256, TxHash};
 use alloy_rpc_types_mev::mevshare::Event;
 use eventsource_client::{Client, ClientBuilder, ReconnectOptions, SSE};
 use futures_util::{Stream, StreamExt};
@@ -69,5 +70,22 @@ impl MevShareClient {
                 }
             }
         }))
+    }
+}
+
+pub fn tx_hash_to_event_hash(tx_hash: TxHash) -> TxHash {
+    keccak256(tx_hash)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::str::FromStr;
+
+    #[test]
+    fn test_tx_hash_to_event_hash() {
+        let input = TxHash::from_str("d2d662b8aa0e8d86ea75d363522c9ede42ef538ae353da564d501c044a885293").unwrap();
+        let expected_output = TxHash::from_str("90b4f5664cc201c3aa112d6bb2fa414c4aee10f00994692b282c1d14a1db6e4d").unwrap();
+        assert_eq!(tx_hash_to_event_hash(input), expected_output);
     }
 }
