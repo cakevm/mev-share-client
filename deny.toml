@@ -10,7 +10,6 @@ allow = [
   "Zlib",
   # permissive license with unclear patent grant
   "CC0-1.0",
-  "OpenSSL", # https://en.wikipedia.org/wiki/OpenSSL#Licensing
 ]
 
 # Clearify licence: https://github.com/briansmith/ring/issues/902
