@@ -22,6 +22,7 @@ pub struct MevShareClient {
 }
 
 impl MevShareClient {
+    #[allow(clippy::result_large_err)]
     pub fn new() -> Result<Self, eventsource_client::Error> {
         let client = ClientBuilder::for_url(MEV_SHARE_SSE_URL)?
             .reconnect(
@@ -37,6 +38,7 @@ impl MevShareClient {
         Ok(Self { client: Box::new(client) })
     }
 
+    #[allow(clippy::result_large_err)]
     pub fn new_with_reconnect_options(reconnect_options: ReconnectOptions) -> Result<Self, eventsource_client::Error> {
         let client = ClientBuilder::for_url(MEV_SHARE_SSE_URL)?.reconnect(reconnect_options).build();
 
