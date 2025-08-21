@@ -1,4 +1,4 @@
-use alloy_primitives::{keccak256, TxHash};
+use alloy_primitives::{TxHash, keccak256};
 use alloy_rpc_types_mev::mevshare::Event;
 use eventsource_client::{Client, ClientBuilder, ReconnectOptions, SSE};
 use futures_util::{Stream, StreamExt};
